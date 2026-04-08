@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>T-Labs — Tu Negocio Merece un Website</title>
+  <meta name="description" content="¿Tu negocio no tiene website? Te lo hacemos en días. Sin complicaciones, sin tecnicismos. Solo resultados." />
+  <meta property="og:title" content="T-Labs — Your Business Deserves a Website" />
+  <meta property="og:description" content="No website yet? We build it for you — fast, simple, no tech headaches." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tlabsdigital.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #090b0d; --dark: #0e1114; --card: #13181e;
+      --border: rgba(0,210,200,0.12); --cyan: #00d2c8;
+      --cyan-dim: rgba(0,210,200,0.08); --white: #f0f4f8; --gray: #8a9ab0;
+      --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); font-family: var(--font-body); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* LANG SYSTEM */
+    .es, .en { display: none; }
+    body.lang-es .es { display: block; }
+    body.lang-en .en { display: block; }
+    body.lang-es .es.i { display: inline; }
+    body.lang-en .en.i { display: inline; }
+    body.lang-es .es.f { display: flex; }
+    body.lang-en .en.f { display: flex; }
+    body.lang-es .es.if { display: inline-flex; }
+    body.lang-en .en.if { display: inline-flex; }
+    /* Nav link lang spans */
+    .nl-es, .nl-en { display: inline; }
+    body.lang-es .nl-en { display: none; }
+    body.lang-en .nl-es { display: none; }
+
+    /* LANG TOGGLE */
+    .lang-toggle { display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 4px; }
+    .lang-btn { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; padding: 5px 12px; border-radius: 4px; border: none; cursor: pointer; background: transparent; color: var(--gray); transition: background 0.2s, color 0.2s; }
+    .lang-btn.active { background: var(--cyan); color: var(--black); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; padding: 18px 48px; background: rgba(9,11,13,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; letter-spacing: 0.08em; color: var(--white); text-decoration: none; white-space: nowrap; }
+    .nav-logo span { color: var(--cyan); }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: 36px; }
+    .nav-link { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-decoration: none; opacity: 0.6; transition: opacity 0.2s, color 0.2s; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--cyan); transition: width 0.25s; }
+    .nav-link:hover { opacity: 1; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 16px; justify-content: flex-end; }
+    .nav-cta { font-family: var(--font-display); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan); text-decoration: none; border: 1px solid var(--cyan); padding: 9px 22px; border-radius: 4px; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--cyan); color: var(--black); }
+    @media (max-width: 900px) { nav { grid-template-columns: auto auto; } .nav-links { display: none !important; } }
+
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,210,200,0.07) 0%, transparent 70%); pointer-events: none; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,210,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,210,200,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%); }
+    .hero-eyebrow { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.4rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 860px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+    .hero h1 em { font-style: normal; color: var(--cyan); }
+    .hero-sub { margin-top: 28px; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gray); max-width: 580px; font-weight: 400; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .hero-actions { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+
+    /* BUTTONS */
+    .btn-primary { background: var(--cyan); color: var(--black); font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; padding: 16px 36px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-whatsapp { background: transparent; color: var(--white); font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; padding: 16px 36px; border-radius: 4px; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 10px; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
+    .btn-whatsapp:hover { border-color: #25d366; color: #25d366; transform: translateY(-2px); }
+
+    /* STATS */
+    .stats { position: relative; z-index: 1; display: flex; justify-content: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--dark); }
+    .stat { flex: 1; max-width: 280px; text-align: center; padding: 36px 24px; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-num { font-family: var(--font-display); font-weight: 800; font-size: 2.2rem; color: var(--cyan); line-height: 1; }
+    .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 1; padding: 100px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 16px; }
+    .section-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .section-sub { color: var(--gray); font-size: 1.05rem; max-width: 540px; }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; margin-top: 64px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .step { background: var(--card); padding: 40px 32px; position: relative; transition: background 0.2s; }
+    .step:hover { background: #161c24; }
+    .step-num { font-family: var(--font-display); font-weight: 800; font-size: 3rem; color: var(--border); line-height: 1; margin-bottom: 20px; }
+    .step h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 10px; }
+    .step p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+    .step-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; position: absolute; top: 20px; right: 20px; }
+
+    /* WHY CARDS */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 64px; }
+    .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 36px 32px; transition: border-color 0.2s, transform 0.2s; }
+    .why-card:hover { border-color: rgba(0,210,200,0.3); transform: translateY(-4px); }
+    .why-icon { width: 44px; height: 44px; background: var(--cyan-dim); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.3rem; }
+    .why-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
+    .why-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+    /* FORM */
+    .form-section { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .form-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .form-left h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+    .form-left p { color: var(--gray); font-size: 1rem; margin-bottom: 24px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .contact-icon { width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .contact-text { font-size: 0.9rem; color: var(--gray); }
+    .contact-text strong { color: var(--white); font-weight: 500; display: block; }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    input, textarea, select { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 0.95rem; padding: 14px 16px; outline: none; transition: border-color 0.2s; appearance: none; }
+    input::placeholder, textarea::placeholder { color: #3a4a5a; }
+    input:focus, textarea:focus, select:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,210,200,0.08); }
+    textarea { resize: vertical; min-height: 120px; }
+    select option { background: var(--card); }
+    .form-submit { margin-top: 8px; }
+    .form-submit .btn-primary { width: 100%; justify-content: center; }
+    .success-msg { display: none; background: rgba(0,210,200,0.08); border: 1px solid rgba(0,210,200,0.3); border-radius: 6px; padding: 20px 24px; text-align: center; color: var(--cyan); font-family: var(--font-display); font-weight: 600; margin-top: 16px; }
+
+    /* FLOATING WA */
+    .wa-floating { position: fixed; bottom: 28px; right: 28px; z-index: 200; width: 56px; height: 56px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 24px rgba(37,211,102,0.35); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+    .wa-floating:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(37,211,102,0.5); }
+
+    /* FOOTER */
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    .footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .footer-logo span { color: var(--cyan); }
+    footer p { font-size: 0.8rem; color: var(--gray); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .stats { flex-wrap: wrap; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
+      .form-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="lang-es">
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa%20saber%20m%C3%A1s." class="wa-floating" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">T<span>-</span>LABS</a>
+  <div class="nav-links">
+    <a href="#proceso" class="nav-link"><span class="nl-es">Proceso</span><span class="nl-en">Process</span></a>
+    <a href="#nosotros" class="nav-link"><span class="nl-es">Nosotros</span><span class="nl-en">About</span></a>
+    <a href="#contacto" class="nav-link"><span class="nl-es">Contacto</span><span class="nl-en">Contact</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contacto" class="nav-cta"><span class="nl-es">Empieza Aquí</span><span class="nl-en">Get Started</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <p class="hero-eyebrow es">Diseño Web · Desarrollo · Lanzamiento</p>
+  <p class="hero-eyebrow en">Web Design · Development · Launch</p>
+  <h1 class="es">Tu negocio merece estar <em>en línea</em></h1>
+  <h1 class="en">Your business deserves to be <em>online</em></h1>
+  <p class="hero-sub es">Si tienes un negocio y no tienes website, estás perdiendo clientes todos los días. Nosotros lo resolvemos — rápido, sin complicaciones, sin tecnicismos.</p>
+  <p class="hero-sub en">If your business isn't online, you're losing customers every single day. We fix that — fast, simple, no tech headaches.</p>
+  <div class="hero-actions" style="display:flex;">
+    <a href="#contacto" class="btn-primary">
+      <span class="es i">Quiero mi website</span>
+      <span class="en i">I want my website</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa." class="btn-whatsapp" target="_blank" id="heroWaBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span class="es i">Escríbenos por WhatsApp</span>
+      <span class="en i">Message us on WhatsApp</span>
+    </a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">30</div>
+    <div class="stat-label es">días o menos para tu sitio live</div>
+    <div class="stat-label en">days or less to go live</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$0</div>
+    <div class="stat-label es">tecnicismos que tú tengas que entender</div>
+    <div class="stat-label en">tech knowledge required from you</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label es">enfocado en tu negocio</div>
+    <div class="stat-label en">focused on your business</div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section id="proceso">
+  <div class="container">
+    <p class="section-label es">El Proceso</p>
+    <p class="section-label en">The Process</p>
+    <h2 class="section-title es">Simple. Rápido. Sin sorpresas.</h2>
+    <h2 class="section-title en">Simple. Fast. No surprises.</h2>
+    <p class="section-sub es">No necesitas saber nada de tecnología. Nosotros manejamos todo — tú solo nos cuentas de tu negocio.</p>
+    <p class="section-sub en">You don't need to know anything about tech. We handle everything — you just tell us about your business.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot"></div>
+        <div class="step-num">01</div>
+        <h3 class="es">Nos cuentas de tu negocio</h3>
+        <h3 class="en">You tell us about your business</h3>
+        <p class="es">Llenamos un formulario juntos. Tú nos dices qué haces, qué necesitas, y qué estilo te gusta. Eso es todo.</p>
+        <p class="en">We fill out a form together. You tell us what you do, what you need, and what style you like. That's it.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot"></div>
+        <div class="step-num">02</div>
+        <h3 class="es">Nosotros diseñamos y construimos</h3>
+        <h3 class="en">We design and build</h3>
+        <p class="es">Creamos tu sitio profesional. Tú ves el avance, das tu opinión, y aprobás cuando estés contento.</p>
+        <p class="en">We build your professional site. You see the progress, give feedback, and approve when you're happy.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot"></div>
+        <div class="step-num">03</div>
+        <h3 class="es">Tu website sale al aire</h3>
+        <h3 class="en">Your website goes live</h3>
+        <p class="es">Lo publicamos, conectamos tu dominio, y listo. Tu negocio ya está en internet — accesible para todos.</p>
+        <p class="en">We publish it, connect your domain, and done. Your business is now online — accessible to everyone.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot"></div>
+        <div class="step-num">04</div>
+        <h3 class="es">Seguimos contigo</h3>
+        <h3 class="en">We stay with you</h3>
+        <p class="es">No desaparecemos. Estamos disponibles para cambios, actualizaciones, y cualquier cosa que el sitio necesite.</p>
+        <p class="en">We don't disappear. We're available for changes, updates, and anything your site needs going forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="nosotros" style="background: var(--dark); border-top: 1px solid var(--border);">
+  <div class="container">
+    <p class="section-label es">¿Por qué T-Labs?</p>
+    <p class="section-label en">Why T-Labs?</p>
+    <h2 class="section-title es">No somos una agencia genérica.</h2>
+    <h2 class="section-title en">We're not a generic agency.</h2>
+    <p class="section-sub es">Somos el equipo que te explica las cosas como son, sin jargon, sin complicar lo simple.</p>
+    <p class="section-sub en">We explain things straight — no jargon, no overcomplicating the simple stuff.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3 class="es">Rápido de verdad</h3><h3 class="en">Actually fast</h3>
+        <p class="es">La mayoría de nuestros sitios están vivos en menos de 30 días. Sin demoras, sin excusas.</p>
+        <p class="en">Most of our sites go live in under 30 days. No delays, no excuses.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3 class="es">Trato personal</h3><h3 class="en">Personal service</h3>
+        <p class="es">Hablas directamente con quien hace el trabajo. Nada de intermediarios ni tickets de soporte.</p>
+        <p class="en">You talk directly to whoever does the work. No middlemen, no support tickets.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <h3 class="es">Sin tecnicismos</h3><h3 class="en">No tech speak</h3>
+        <p class="es">Te explicamos todo en lenguaje claro. Si no lo entiendes, lo explicamos de nuevo.</p>
+        <p class="en">We explain everything in plain language. If it's unclear, we explain it again.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <h3 class="es">Precios claros</h3><h3 class="en">Clear pricing</h3>
+        <p class="es">Sabes exactamente qué pagas y por qué. Sin sorpresas ni costos ocultos.</p>
+        <p class="en">You know exactly what you pay and why. No surprises, no hidden costs.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📱</div>
+        <h3 class="es">Funciona en celular</h3><h3 class="en">Mobile-ready</h3>
+        <p class="es">Todos nuestros sitios se ven perfectos en teléfonos. Así es como la gente te busca.</p>
+        <p class="en">All our sites look perfect on phones. That's how your customers find you.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <h3 class="es">Siempre disponibles</h3><h3 class="en">Always available</h3>
+        <p class="es">Cuando el sitio está vivo, seguimos contigo. Cambios, preguntas — aquí estamos.</p>
+        <p class="en">Once the site is live, we're still here. Changes, questions — we've got you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" class="form-section">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-left">
+        <p class="section-label es">Empecemos</p>
+        <p class="section-label en">Let's Start</p>
+        <h2 class="es">¿Listo para tener tu website?</h2>
+        <h2 class="en">Ready to get your website?</h2>
+        <p class="es">Llena el formulario y te respondemos en menos de 24 horas. O escríbenos por WhatsApp — como prefieras.</p>
+        <p class="en">Fill out the form and we'll get back to you within 24 hours. Or message us on WhatsApp — whatever works best.</p>
+        <div class="contact-item">
+          <div class="contact-icon">💬</div>
+          <div class="contact-text"><strong>WhatsApp</strong>+1 (954) 706-8400</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-text"><strong>Email</strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5c595054537d49525152515c5f4e135e5250">[email&#160;protected]</a></div>
+        </div>
+        <br/>
+        <a id="contactWaBtn" href="https://wa.me/19547068400?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20hacer%20mi%20website%20con%20T-Labs." class="btn-whatsapp" target="_blank" style="display:inline-flex; margin-top:8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="es i">Escríbenos por WhatsApp</span>
+          <span class="en i">Message us on WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="form-right">
+        <form id="contactForm" action="https://formspree.io/f/xlgovjaq" method="POST">
+          <div class="form-row">
+            <div>
+              <label class="es">Tu Nombre</label><label class="en">Your Name</label>
+              <input type="text" name="nombre" id="inputNombre" placeholder="Ej. María García" required />
+            </div>
+            <div>
+              <label class="es">Nombre del Negocio</label><label class="en">Business Name</label>
+              <input type="text" name="negocio" id="inputNegocio" placeholder="Ej. Bella Boutique" required />
+            </div>
+          </div>
+          <div>
+            <label class="es">Correo Electrónico</label><label class="en">Email Address</label>
+            <input type="email" name="email" placeholder="tu@correo.com" required />
+          </div>
+          <div>
+            <label class="es">Teléfono / WhatsApp</label><label class="en">Phone / WhatsApp</label>
+            <input type="tel" name="telefono" placeholder="+1 (000) 000-0000" />
+          </div>
+          <div>
+            <label class="es">¿Qué tipo de negocio tienes?</label><label class="en">What type of business do you have?</label>
+            <select name="tipo" id="tipoSelect">
+              <option value="" disabled selected>—</option>
+              <option data-es="Tienda / Productos físicos" data-en="Store / Physical products">Tienda / Store</option>
+              <option data-es="Restaurante / Comida" data-en="Restaurant / Food">Restaurante / Restaurant</option>
+              <option data-es="Servicios profesionales" data-en="Professional services">Servicios / Services</option>
+              <option data-es="Salón / Spa / Belleza" data-en="Salon / Spa / Beauty">Salón / Salon</option>
+              <option data-es="Construcción / Contratistas" data-en="Construction / Contractors">Construcción / Construction</option>
+              <option data-es="Salud / Bienestar" data-en="Health / Wellness">Salud / Health</option>
+              <option data-es="Otro" data-en="Other">Otro / Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="es">¿Qué necesitas? (opcional)</label><label class="en">What do you need? (optional)</label>
+            <textarea name="mensaje" id="msgArea" placeholder="Cuéntanos brevemente..."></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-primary">
+              <span class="es">Enviar — Me interesa</span>
+              <span class="en">Send — I'm interested</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="success-msg" id="successMsg">
+            <span class="es">✓ ¡Mensaje recibido! Te contactamos en menos de 24 horas.</span>
+            <span class="en">✓ Message received! We'll reach out within 24 hours.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">T<span>-</span>LABS</div>
+  <p>© 2026 T-Labs Digital. <span class="es i">Todos los derechos reservados.</span><span class="en i">All rights reserved.</span></p>
+  <p style="margin-top:6px;">tlabsdigital.com</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+    });
+    // Swap WA links
+    const waLinks = {
+      heroWaBtn: {
+        es: 'https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa.',
+        en: 'https://wa.me/19547068400?text=Hi%2C%20I%20saw%20your%20page%20and%20I%27m%20interested.'
+      },
+      contactWaBtn: {
+        es: 'https://wa.me/19547068400?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20hacer%20mi%20website%20con%20T-Labs.',
+        en: 'https://wa.me/19547068400?text=Hi%2C%20I%20want%20to%20know%20more%20about%20getting%20a%20website%20with%20T-Labs.'
+      }
+    };
+    Object.entries(waLinks).forEach(([id, urls]) => {
+      const el = document.getElementById(id);
+      if (el) el.href = urls[lang];
+    });
+    // Textarea placeholder
+    const msg = document.getElementById('msgArea');
+    if (msg) msg.placeholder = lang === 'es' ? 'Cuéntanos brevemente qué tipo de página necesitas...' : 'Tell us briefly what kind of page you need...';
+    // Name placeholder
+    const nombre = document.getElementById('inputNombre');
+    if (nombre) nombre.placeholder = lang === 'es' ? 'Ej. María García' : 'e.g. John Smith';
+    const negocio = document.getElementById('inputNegocio');
+    if (negocio) negocio.placeholder = lang === 'es' ? 'Ej. Bella Boutique' : 'e.g. Bella Boutique';
+  }
+
+  // Form
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMsg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; successMsg.style.display = 'block'; }
+    } catch { alert('Error. Please contact us via WhatsApp.'); }
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.st
