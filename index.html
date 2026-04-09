@@ -38,6 +38,33 @@
     body.lang-en .en.f { display: flex; }
     body.lang-es .es.if { display: inline-flex; }
     body.lang-en .en.if { display: inline-flex; }
+    /* list items — need list-item not block */
+    body.lang-es li.es { display: list-item; }
+    body.lang-en li.en { display: list-item; }
+    /* guarantee row items */
+    body.lang-es .hero-guarantee-item.es { display: flex; }
+    body.lang-en .hero-guarantee-item.en { display: flex; }
+    /* proof card elements */
+    body.lang-es .proof-industry.es { display: block; }
+    body.lang-en .proof-industry.en { display: block; }
+    body.lang-es .proof-desc.es { display: block; }
+    body.lang-en .proof-desc.en { display: block; }
+    body.lang-es .proof-status.es { display: inline-flex; }
+    body.lang-en .proof-status.en { display: inline-flex; }
+    /* pricing elements */
+    body.lang-es .pricing-type.es { display: block; }
+    body.lang-en .pricing-type.en { display: block; }
+    body.lang-es .pricing-desc.es { display: block; }
+    body.lang-en .pricing-desc.en { display: block; }
+    body.lang-es .pricing-badge.es { display: inline-block; }
+    body.lang-en .pricing-badge.en { display: inline-block; }
+    body.lang-es .pricing-amount span.es { display: inline; }
+    body.lang-en .pricing-amount span.en { display: inline; }
+    /* faq elements */
+    body.lang-es .faq-q-text.es { display: block; }
+    body.lang-en .faq-q-text.en { display: block; }
+    body.lang-es .faq-a-inner.es { display: block; }
+    body.lang-en .faq-a-inner.en { display: block; }
     .nl-es, .nl-en { display: inline; }
     body.lang-es .nl-en { display: none; }
     body.lang-en .nl-es { display: none; }
@@ -289,10 +316,8 @@
       <p class="proof-name">Marietta Jewelry</p>
       <p class="proof-desc es">Tienda online con catálogo de productos y sistema de pagos — diseñada para vender desde el primer día.</p>
       <p class="proof-desc en">Online store with product catalog and payment system — built to sell from day one.</p>
-      <span class="proof-status"><span class="proof-dot"></span>
-        <span class="es i">En desarrollo</span>
-        <span class="en i">In development</span>
-      </span>
+      <span class="proof-status es"><span class="proof-dot"></span>En desarrollo</span>
+      <span class="proof-status en"><span class="proof-dot"></span>In development</span>
     </div>
     <div class="proof-card">
       <p class="proof-industry es">Logística · B2B / Corporativo</p>
@@ -300,10 +325,8 @@
       <p class="proof-name">Skyvan Logistics</p>
       <p class="proof-desc es">Sitio corporativo orientado a clientes empresariales y gubernamentales — tono institucional, impacto inmediato.</p>
       <p class="proof-desc en">Corporate site targeting business and government clients — institutional tone, immediate credibility.</p>
-      <span class="proof-status"><span class="proof-dot"></span>
-        <span class="es i">Listo para lanzar</span>
-        <span class="en i">Ready to launch</span>
-      </span>
+      <span class="proof-status es"><span class="proof-dot"></span>Listo para lanzar</span>
+      <span class="proof-status en"><span class="proof-dot"></span>Ready to launch</span>
     </div>
   </div>
 </div>
@@ -399,7 +422,7 @@
       <div class="pricing-card">
         <p class="pricing-type es">Fee de Iniciación</p>
         <p class="pricing-type en">Setup Fee</p>
-        <p class="pricing-amount">$200 <span class="es">– $2,000</span><span class="en">– $2,000</span></p>
+        <p class="pricing-amount">$200 <span class="es i">– $2,000</span><span class="en i">– $2,000</span></p>
         <p class="pricing-desc es">Pago único para diseñar y construir tu sitio. El monto depende del tipo de proyecto.</p>
         <p class="pricing-desc en">One-time payment to design and build your site. Amount depends on project type.</p>
         <ul class="pricing-includes">
@@ -420,7 +443,7 @@
         <span class="pricing-badge en">Most popular</span>
         <p class="pricing-type es">Mantenimiento Mensual</p>
         <p class="pricing-type en">Monthly Maintenance</p>
-        <p class="pricing-amount">$100 <span class="es">– $350 / mes</span><span class="en">– $350 / mo</span></p>
+        <p class="pricing-amount">$100 <span class="es i">– $350 / mes</span><span class="en i">– $350 / mo</span></p>
         <p class="pricing-desc es">Mes a mes. Cancela cuando quieras. Sin contratos a largo plazo.</p>
         <p class="pricing-desc en">Month to month. Cancel anytime. No long-term contracts.</p>
         <ul class="pricing-includes">
@@ -439,7 +462,7 @@
       <div class="pricing-card">
         <p class="pricing-type es">Plataforma (tu costo directo)</p>
         <p class="pricing-type en">Platform (your direct cost)</p>
-        <p class="pricing-amount">$25 <span class="es">– $39 / mes</span><span class="en">– $39 / mo</span></p>
+        <p class="pricing-amount">$25 <span class="es i">– $39 / mes</span><span class="en i">– $39 / mo</span></p>
         <p class="pricing-desc es">Estos costos van directo a los proveedores — no a nosotros. Te ayudamos a configurarlos.</p>
         <p class="pricing-desc en">These costs go straight to third-party providers — not to us. We help you set them up.</p>
         <ul class="pricing-includes">
@@ -457,8 +480,8 @@
       </div>
     </div>
     <p class="pricing-note st">
-      <span class="es"><strong>¿No sabes qué tipo de sitio necesitas?</strong> No hay problema — en la llamada te orientamos sin costo. El precio final siempre se confirma antes de empezar.</span>
-      <span class="en"><strong>Not sure what type of site you need?</strong> No problem — we'll guide you on the call at no cost. The final price is always confirmed before we start.</span>
+      <span class="es i"><strong>¿No sabes qué tipo de sitio necesitas?</strong> No hay problema — en la llamada te orientamos sin costo. El precio final siempre se confirma antes de empezar.</span>
+      <span class="en i"><strong>Not sure what type of site you need?</strong> No problem — we'll guide you on the call at no cost. The final price is always confirmed before we start.</span>
     </p>
   </div>
 </section>
@@ -565,7 +588,7 @@
         </div>
         <div class="contact-item">
           <div class="contact-icon">✉️</div>
-          <div class="contact-text"><strong>Email</strong>admin@tololabs.com</div>
+          <div class="contact-text"><strong>Email</strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89e8ede4e0e7c9fde6e5e6e5e8ebfaa7eae6e4">[email&#160;protected]</a></div>
         </div>
         <br/>
         <a id="contactWaBtn" href="https://wa.me/19547068400?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20hacer%20mi%20website%20con%20T-Labs." class="btn-whatsapp" target="_blank" style="display:inline-flex; margin-top:8px;">
@@ -633,10 +656,10 @@
 <footer>
   <div class="footer-logo">T<span>-</span>LABS</div>
   <p>© 2026 T-Labs Digital. <span class="es i">Todos los derechos reservados.</span><span class="en i">All rights reserved.</span></p>
-  <p style="margin-top:6px; color: #4a5a6a;">tlabsdigital.com · admin@tololabs.com</p>
+  <p style="margin-top:6px; color: #4a5a6a;">tlabsdigital.com · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c7a6a3aaaea987b3a8aba8aba6a5b4e9a4a8aa">[email&#160;protected]</a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function setLang(lang) {
     document.body.className = 'lang-' + lang;
     document.documentElement.lang = lang;
@@ -681,14 +704,4 @@
     try {
       const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
       if (res.ok) { form.style.display = 'none'; successMsg.style.display = 'block'; }
-    } catch { alert('Error. Please contact us via WhatsApp.'); }
-  });
-
-  // Scroll reveal
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.st').forEach(el => obs.observe(el));
-</script>
-</body>
-</html>
+    } catch { alert('Error. Please contact
