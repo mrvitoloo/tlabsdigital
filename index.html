@@ -38,7 +38,6 @@
     body.lang-en .en.f { display: flex; }
     body.lang-es .es.if { display: inline-flex; }
     body.lang-en .en.if { display: inline-flex; }
-    /* Nav link lang spans */
     .nl-es, .nl-en { display: inline; }
     body.lang-es .nl-en { display: none; }
     body.lang-en .nl-es { display: none; }
@@ -69,12 +68,17 @@
     .hero-eyebrow { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
     .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.4rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 860px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
     .hero h1 em { font-style: normal; color: var(--cyan); }
-    .hero-sub { margin-top: 28px; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gray); max-width: 580px; font-weight: 400; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
+    .hero-sub { margin-top: 28px; font-size: clamp(1rem, 2vw, 1.2rem); color: var(--gray); max-width: 600px; font-weight: 400; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
     .hero-actions { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+    .hero-guarantee { margin-top: 24px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 0.8s ease forwards 1s; }
+    .hero-guarantee-item { font-size: 0.8rem; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+    .hero-guarantee-item::before { content: '✓'; color: var(--cyan); font-weight: 700; }
 
     /* BUTTONS */
     .btn-primary { background: var(--cyan); color: var(--black); font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; letter-spacing: 0.04em; padding: 16px 36px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s, transform 0.2s; display: inline-flex; align-items: center; gap: 8px; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--gray); font-family: var(--font-display); font-weight: 500; font-size: 0.85rem; padding: 16px 20px; border-radius: 4px; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s, color 0.2s; }
+    .btn-ghost:hover { border-color: #25d366; color: #25d366; }
     .btn-whatsapp { background: transparent; color: var(--white); font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; padding: 16px 36px; border-radius: 4px; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 10px; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
     .btn-whatsapp:hover { border-color: #25d366; color: #25d366; transform: translateY(-2px); }
 
@@ -84,6 +88,19 @@
     .stat:last-child { border-right: none; }
     .stat-num { font-family: var(--font-display); font-weight: 800; font-size: 2.2rem; color: var(--cyan); line-height: 1; }
     .stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+
+    /* SOCIAL PROOF */
+    .proof-section { position: relative; z-index: 1; padding: 64px 24px; background: var(--black); border-bottom: 1px solid var(--border); }
+    .proof-label { font-family: var(--font-display); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray); text-align: center; margin-bottom: 36px; }
+    .proof-clients { display: flex; justify-content: center; align-items: stretch; gap: 2px; flex-wrap: wrap; max-width: 860px; margin: 0 auto; }
+    .proof-card { flex: 1; min-width: 220px; max-width: 300px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 28px 28px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s; }
+    .proof-card:hover { border-color: rgba(0,210,200,0.3); }
+    .proof-industry { font-family: var(--font-display); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cyan); }
+    .proof-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--white); }
+    .proof-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+    .proof-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; color: #25d366; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.06em; }
+    .proof-dot { width: 6px; height: 6px; background: #25d366; border-radius: 50%; animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     /* SECTIONS */
     section { position: relative; z-index: 1; padding: 100px 24px; }
@@ -101,13 +118,41 @@
     .step p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
     .step-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; position: absolute; top: 20px; right: 20px; }
 
-    /* WHY CARDS */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 64px; }
+    /* WHY CARDS — 3 cards */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 64px; }
     .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 36px 32px; transition: border-color 0.2s, transform 0.2s; }
     .why-card:hover { border-color: rgba(0,210,200,0.3); transform: translateY(-4px); }
     .why-icon { width: 44px; height: 44px; background: var(--cyan-dim); border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.3rem; }
     .why-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; margin-bottom: 10px; }
     .why-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+    /* PRICING */
+    .pricing-section { position: relative; z-index: 1; padding: 100px 24px; background: var(--dark); border-top: 1px solid var(--border); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; margin-top: 64px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .pricing-card { background: var(--card); padding: 40px 32px; position: relative; }
+    .pricing-card.featured { background: rgba(0,210,200,0.06); border-left: 2px solid var(--cyan); }
+    .pricing-badge { display: inline-block; font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); background: var(--cyan); padding: 3px 10px; border-radius: 3px; margin-bottom: 16px; }
+    .pricing-type { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; }
+    .pricing-amount { font-family: var(--font-display); font-weight: 800; font-size: 2.4rem; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .pricing-amount span { font-size: 1rem; font-weight: 400; color: var(--gray); }
+    .pricing-desc { font-size: 0.85rem; color: var(--gray); margin-bottom: 24px; line-height: 1.5; }
+    .pricing-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .pricing-includes li { font-size: 0.85rem; color: var(--gray); display: flex; align-items: flex-start; gap: 8px; }
+    .pricing-includes li::before { content: '✓'; color: var(--cyan); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .pricing-note { margin-top: 40px; text-align: center; font-size: 0.82rem; color: var(--gray); padding: 16px 24px; border: 1px solid var(--border); border-radius: 6px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    .pricing-note strong { color: var(--white); }
+
+    /* FAQ */
+    .faq-section { position: relative; z-index: 1; padding: 100px 24px; }
+    .faq-list { margin-top: 64px; display: flex; flex-direction: column; gap: 2px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .faq-item { background: var(--card); }
+    .faq-q { width: 100%; background: transparent; border: none; text-align: left; padding: 24px 32px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .faq-q-text { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--white); line-height: 1.3; }
+    .faq-icon { font-size: 1.2rem; color: var(--cyan); flex-shrink: 0; transition: transform 0.25s; font-family: var(--font-display); font-weight: 300; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a-inner { padding: 0 32px 24px; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
 
     /* FORM */
     .form-section { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -140,6 +185,9 @@
     .footer-logo span { color: var(--cyan); }
     footer p { font-size: 0.8rem; color: var(--gray); }
 
+    /* SCROLL REVEAL */
+    .st { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 768px) {
@@ -148,6 +196,8 @@
       .stat { border-right: none; border-bottom: 1px solid var(--border); max-width: 100%; }
       .form-wrap { grid-template-columns: 1fr; gap: 48px; }
       .form-row { grid-template-columns: 1fr; }
+      .proof-clients { flex-direction: column; align-items: center; }
+      .hero-guarantee { gap: 12px; }
     }
   </style>
 </head>
@@ -164,6 +214,7 @@
   <div class="nav-links">
     <a href="#proceso" class="nav-link"><span class="nl-es">Proceso</span><span class="nl-en">Process</span></a>
     <a href="#nosotros" class="nav-link"><span class="nl-es">Nosotros</span><span class="nl-en">About</span></a>
+    <a href="#precios" class="nav-link"><span class="nl-es">Precios</span><span class="nl-en">Pricing</span></a>
     <a href="#contacto" class="nav-link"><span class="nl-es">Contacto</span><span class="nl-en">Contact</span></a>
   </div>
   <div class="nav-right">
@@ -182,19 +233,29 @@
   <p class="hero-eyebrow en">Web Design · Development · Launch</p>
   <h1 class="es">Tu negocio merece estar <em>en línea</em></h1>
   <h1 class="en">Your business deserves to be <em>online</em></h1>
-  <p class="hero-sub es">Si tienes un negocio y no tienes website, estás perdiendo clientes todos los días. Nosotros lo resolvemos — rápido, sin complicaciones, sin tecnicismos.</p>
-  <p class="hero-sub en">If your business isn't online, you're losing customers every single day. We fix that — fast, simple, no tech headaches.</p>
+  <p class="hero-sub es">Si tienes un negocio y no tienes website, estás perdiendo clientes todos los días. Lo resolvemos desde $200, en 30 días o menos.</p>
+  <p class="hero-sub en">If your business isn't online, you're losing customers every day. We fix that from $200, in 30 days or less.</p>
   <div class="hero-actions" style="display:flex;">
     <a href="#contacto" class="btn-primary">
-      <span class="es i">Quiero mi website</span>
-      <span class="en i">I want my website</span>
+      <span class="es i">Agenda tu llamada gratis</span>
+      <span class="en i">Book your free call</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-    <a href="https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa." class="btn-whatsapp" target="_blank" id="heroWaBtn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      <span class="es i">Escríbenos por WhatsApp</span>
-      <span class="en i">Message us on WhatsApp</span>
+    <a href="https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa." class="btn-ghost" target="_blank" id="heroWaBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span class="es i">WhatsApp</span>
+      <span class="en i">WhatsApp</span>
     </a>
+  </div>
+  <div class="hero-guarantee">
+    <span class="hero-guarantee-item es">Mes a mes</span>
+    <span class="hero-guarantee-item en">Month to month</span>
+    <span class="hero-guarantee-item es">Sin contratos</span>
+    <span class="hero-guarantee-item en">No contracts</span>
+    <span class="hero-guarantee-item es">Respuesta en 24 hrs</span>
+    <span class="hero-guarantee-item en">Response in 24 hrs</span>
+    <span class="hero-guarantee-item es">2 rondas de revisión incluidas</span>
+    <span class="hero-guarantee-item en">2 revision rounds included</span>
   </div>
 </section>
 
@@ -202,46 +263,76 @@
 <div class="stats">
   <div class="stat">
     <div class="stat-num">30</div>
-    <div class="stat-label es">días o menos para tu sitio live</div>
+    <div class="stat-label es">días o menos para ir live</div>
     <div class="stat-label en">days or less to go live</div>
   </div>
   <div class="stat">
-    <div class="stat-num">$0</div>
-    <div class="stat-label es">tecnicismos que tú tengas que entender</div>
-    <div class="stat-label en">tech knowledge required from you</div>
+    <div class="stat-num">2</div>
+    <div class="stat-label es">rondas de revisión incluidas</div>
+    <div class="stat-label en">revision rounds included</div>
   </div>
   <div class="stat">
-    <div class="stat-num">100%</div>
-    <div class="stat-label es">enfocado en tu negocio</div>
-    <div class="stat-label en">focused on your business</div>
+    <div class="stat-num">24h</div>
+    <div class="stat-label es">tiempo máximo de respuesta</div>
+    <div class="stat-label en">max response time</div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-section st">
+  <p class="proof-label es">Negocios que ya confían en T-Labs</p>
+  <p class="proof-label en">Businesses already live with T-Labs</p>
+  <div class="proof-clients">
+    <div class="proof-card">
+      <p class="proof-industry es">E-Commerce · Joyería</p>
+      <p class="proof-industry en">E-Commerce · Jewelry</p>
+      <p class="proof-name">Marietta Jewelry</p>
+      <p class="proof-desc es">Tienda online con catálogo de productos y sistema de pagos — diseñada para vender desde el primer día.</p>
+      <p class="proof-desc en">Online store with product catalog and payment system — built to sell from day one.</p>
+      <span class="proof-status"><span class="proof-dot"></span>
+        <span class="es i">En desarrollo</span>
+        <span class="en i">In development</span>
+      </span>
+    </div>
+    <div class="proof-card">
+      <p class="proof-industry es">Logística · B2B / Corporativo</p>
+      <p class="proof-industry en">Logistics · B2B / Corporate</p>
+      <p class="proof-name">Skyvan Logistics</p>
+      <p class="proof-desc es">Sitio corporativo orientado a clientes empresariales y gubernamentales — tono institucional, impacto inmediato.</p>
+      <p class="proof-desc en">Corporate site targeting business and government clients — institutional tone, immediate credibility.</p>
+      <span class="proof-status"><span class="proof-dot"></span>
+        <span class="es i">Listo para lanzar</span>
+        <span class="en i">Ready to launch</span>
+      </span>
+    </div>
   </div>
 </div>
 
 <!-- PROCESS -->
 <section id="proceso">
   <div class="container">
-    <p class="section-label es">El Proceso</p>
-    <p class="section-label en">The Process</p>
-    <h2 class="section-title es">Simple. Rápido. Sin sorpresas.</h2>
-    <h2 class="section-title en">Simple. Fast. No surprises.</h2>
-    <p class="section-sub es">No necesitas saber nada de tecnología. Nosotros manejamos todo — tú solo nos cuentas de tu negocio.</p>
-    <p class="section-sub en">You don't need to know anything about tech. We handle everything — you just tell us about your business.</p>
-    <div class="steps">
+    <p class="section-label es st">El Proceso</p>
+    <p class="section-label en st">The Process</p>
+    <h2 class="section-title es st">Simple. Rápido. Sin sorpresas.</h2>
+    <h2 class="section-title en st">Simple. Fast. No surprises.</h2>
+    <p class="section-sub es st">No necesitas saber nada de tecnología. Nosotros manejamos todo — tú solo nos cuentas de tu negocio.</p>
+    <p class="section-sub en st">You don't need to know anything about tech. We handle everything — you just tell us about your business.</p>
+    <div class="steps st">
       <div class="step">
         <div class="step-dot"></div>
         <div class="step-num">01</div>
-        <h3 class="es">Nos cuentas de tu negocio</h3>
-        <h3 class="en">You tell us about your business</h3>
-        <p class="es">Llenamos un formulario juntos. Tú nos dices qué haces, qué necesitas, y qué estilo te gusta. Eso es todo.</p>
-        <p class="en">We fill out a form together. You tell us what you do, what you need, and what style you like. That's it.</p>
+        <h3 class="es">Llamada de descubrimiento</h3>
+        <h3 class="en">Discovery call</h3>
+        <p class="es">Hablamos 20 minutos. Tú nos cuentas de tu negocio, qué necesitas, y qué estilo te gusta. Sin compromiso.</p>
+        <p class="en">We talk for 20 minutes. You tell us about your business, what you need, and what style you like. No commitment.</p>
       </div>
       <div class="step">
         <div class="step-dot"></div>
         <div class="step-num">02</div>
-        <h3 class="es">Nosotros diseñamos y construimos</h3>
-        <h3 class="en">We design and build</h3>
-        <p class="es">Creamos tu sitio profesional. Tú ves el avance, das tu opinión, y aprobás cuando estés contento.</p>
-        <p class="en">We build your professional site. You see the progress, give feedback, and approve when you're happy.</p>
+        <h3 class="es">Te presentamos 3 diseños</h3>
+        <h3 class="en">We show you 3 designs</h3>
+        <p class="es">Creamos 3 opciones de diseño en los colores de tu negocio. Tú eliges cuál te gusta más y le damos vida.</p>
+        <p class="en">We create 3 design options in your business colors. You pick the one you like and we bring it to life.</p>
       </div>
       <div class="step">
         <div class="step-dot"></div>
@@ -256,59 +347,203 @@
         <div class="step-num">04</div>
         <h3 class="es">Seguimos contigo</h3>
         <h3 class="en">We stay with you</h3>
-        <p class="es">No desaparecemos. Estamos disponibles para cambios, actualizaciones, y cualquier cosa que el sitio necesite.</p>
-        <p class="en">We don't disappear. We're available for changes, updates, and anything your site needs going forward.</p>
+        <p class="es">No desaparecemos. Cambios, actualizaciones, y soporte técnico — todo incluido en el mantenimiento mensual.</p>
+        <p class="en">We don't disappear. Changes, updates, and technical support — all included in the monthly maintenance.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY -->
+<!-- WHY — 3 cards only -->
 <section id="nosotros" style="background: var(--dark); border-top: 1px solid var(--border);">
   <div class="container">
-    <p class="section-label es">¿Por qué T-Labs?</p>
-    <p class="section-label en">Why T-Labs?</p>
-    <h2 class="section-title es">No somos una agencia genérica.</h2>
-    <h2 class="section-title en">We're not a generic agency.</h2>
-    <p class="section-sub es">Somos el equipo que te explica las cosas como son, sin jargon, sin complicar lo simple.</p>
-    <p class="section-sub en">We explain things straight — no jargon, no overcomplicating the simple stuff.</p>
-    <div class="why-grid">
+    <p class="section-label es st">¿Por qué T-Labs?</p>
+    <p class="section-label en st">Why T-Labs?</p>
+    <h2 class="section-title es st">No somos una agencia genérica.</h2>
+    <h2 class="section-title en st">We're not a generic agency.</h2>
+    <p class="section-sub es st">Una sola persona responsable de tu proyecto. Hablas directo con quien hace el trabajo.</p>
+    <p class="section-sub en st">One person responsible for your project. You talk directly to whoever does the work.</p>
+    <div class="why-grid st">
       <div class="why-card">
         <div class="why-icon">⚡</div>
         <h3 class="es">Rápido de verdad</h3><h3 class="en">Actually fast</h3>
-        <p class="es">La mayoría de nuestros sitios están vivos en menos de 30 días. Sin demoras, sin excusas.</p>
-        <p class="en">Most of our sites go live in under 30 days. No delays, no excuses.</p>
+        <p class="es">La mayoría de nuestros sitios están vivos en menos de 30 días. Sin demoras, sin excusas. Te mostramos el avance en tiempo real.</p>
+        <p class="en">Most of our sites go live in under 30 days. No delays, no excuses. We show you progress in real time.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">🤝</div>
-        <h3 class="es">Trato personal</h3><h3 class="en">Personal service</h3>
-        <p class="es">Hablas directamente con quien hace el trabajo. Nada de intermediarios ni tickets de soporte.</p>
-        <p class="en">You talk directly to whoever does the work. No middlemen, no support tickets.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💡</div>
-        <h3 class="es">Sin tecnicismos</h3><h3 class="en">No tech speak</h3>
-        <p class="es">Te explicamos todo en lenguaje claro. Si no lo entiendes, lo explicamos de nuevo.</p>
-        <p class="en">We explain everything in plain language. If it's unclear, we explain it again.</p>
+        <h3 class="es">Trato personal + bilingüe</h3><h3 class="en">Personal + bilingual service</h3>
+        <p class="es">Atendemos en español e inglés. Hablas directamente con quien construye tu sitio — nada de intermediarios ni tickets de soporte.</p>
+        <p class="en">We work in Spanish and English. You talk directly to whoever builds your site — no middlemen, no support tickets.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">🔒</div>
-        <h3 class="es">Precios claros</h3><h3 class="en">Clear pricing</h3>
-        <p class="es">Sabes exactamente qué pagas y por qué. Sin sorpresas ni costos ocultos.</p>
-        <p class="en">You know exactly what you pay and why. No surprises, no hidden costs.</p>
+        <h3 class="es">Precio claro desde el día 1</h3><h3 class="en">Clear pricing from day 1</h3>
+        <p class="es">Sabes exactamente qué pagas y por qué antes de firmar nada. Mes a mes, sin contratos largos, sin costos ocultos.</p>
+        <p class="en">You know exactly what you pay and why before signing anything. Month to month, no long contracts, no hidden fees.</p>
       </div>
-      <div class="why-card">
-        <div class="why-icon">📱</div>
-        <h3 class="es">Funciona en celular</h3><h3 class="en">Mobile-ready</h3>
-        <p class="es">Todos nuestros sitios se ven perfectos en teléfonos. Así es como la gente te busca.</p>
-        <p class="en">All our sites look perfect on phones. That's how your customers find you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="precios" class="pricing-section">
+  <div class="container">
+    <p class="section-label es st">Precios</p>
+    <p class="section-label en st">Pricing</p>
+    <h2 class="section-title es st">Sin sorpresas. Sin letra chica.</h2>
+    <h2 class="section-title en st">No surprises. No fine print.</h2>
+    <p class="section-sub es st">Precios directos para que sepas exactamente qué esperar antes de hablar con nosotros.</p>
+    <p class="section-sub en st">Straightforward pricing so you know exactly what to expect before talking to us.</p>
+    <div class="pricing-grid st">
+      <div class="pricing-card">
+        <p class="pricing-type es">Fee de Iniciación</p>
+        <p class="pricing-type en">Setup Fee</p>
+        <p class="pricing-amount">$200 <span class="es">– $2,000</span><span class="en">– $2,000</span></p>
+        <p class="pricing-desc es">Pago único para diseñar y construir tu sitio. El monto depende del tipo de proyecto.</p>
+        <p class="pricing-desc en">One-time payment to design and build your site. Amount depends on project type.</p>
+        <ul class="pricing-includes">
+          <li class="es">Landing page desde $200</li>
+          <li class="en">Landing page from $200</li>
+          <li class="es">Tienda online desde $500</li>
+          <li class="en">Online store from $500</li>
+          <li class="es">3 opciones de diseño incluidas</li>
+          <li class="en">3 design options included</li>
+          <li class="es">2 rondas de revisión</li>
+          <li class="en">2 revision rounds</li>
+          <li class="es">Conexión de dominio incluida</li>
+          <li class="en">Domain connection included</li>
+        </ul>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🛠️</div>
-        <h3 class="es">Siempre disponibles</h3><h3 class="en">Always available</h3>
-        <p class="es">Cuando el sitio está vivo, seguimos contigo. Cambios, preguntas — aquí estamos.</p>
-        <p class="en">Once the site is live, we're still here. Changes, questions — we've got you.</p>
+      <div class="pricing-card featured">
+        <span class="pricing-badge es">Más popular</span>
+        <span class="pricing-badge en">Most popular</span>
+        <p class="pricing-type es">Mantenimiento Mensual</p>
+        <p class="pricing-type en">Monthly Maintenance</p>
+        <p class="pricing-amount">$100 <span class="es">– $350 / mes</span><span class="en">– $350 / mo</span></p>
+        <p class="pricing-desc es">Mes a mes. Cancela cuando quieras. Sin contratos a largo plazo.</p>
+        <p class="pricing-desc en">Month to month. Cancel anytime. No long-term contracts.</p>
+        <ul class="pricing-includes">
+          <li class="es">Cambios y actualizaciones de contenido</li>
+          <li class="en">Content changes and updates</li>
+          <li class="es">Monitoreo de uptime y seguridad</li>
+          <li class="en">Uptime and security monitoring</li>
+          <li class="es">Soporte técnico directo</li>
+          <li class="en">Direct technical support</li>
+          <li class="es">Backups y actualizaciones</li>
+          <li class="en">Backups and platform updates</li>
+          <li class="es">Respuesta en menos de 24 horas</li>
+          <li class="en">Response in under 24 hours</li>
+        </ul>
       </div>
+      <div class="pricing-card">
+        <p class="pricing-type es">Plataforma (tu costo directo)</p>
+        <p class="pricing-type en">Platform (your direct cost)</p>
+        <p class="pricing-amount">$25 <span class="es">– $39 / mes</span><span class="en">– $39 / mo</span></p>
+        <p class="pricing-desc es">Estos costos van directo a los proveedores — no a nosotros. Te ayudamos a configurarlos.</p>
+        <p class="pricing-desc en">These costs go straight to third-party providers — not to us. We help you set them up.</p>
+        <ul class="pricing-includes">
+          <li class="es">Hosting incluido en la plataforma</li>
+          <li class="en">Hosting included in platform</li>
+          <li class="es">Certificado SSL incluido</li>
+          <li class="en">SSL certificate included</li>
+          <li class="es">Shopify, Lovable o similar</li>
+          <li class="en">Shopify, Lovable or similar</li>
+          <li class="es">Dominio ~$15–$25 / año</li>
+          <li class="en">Domain ~$15–$25 / year</li>
+          <li class="es">Sin servidores que administrar</li>
+          <li class="en">No servers to manage</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pricing-note st">
+      <span class="es"><strong>¿No sabes qué tipo de sitio necesitas?</strong> No hay problema — en la llamada te orientamos sin costo. El precio final siempre se confirma antes de empezar.</span>
+      <span class="en"><strong>Not sure what type of site you need?</strong> No problem — we'll guide you on the call at no cost. The final price is always confirmed before we start.</span>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" style="background: var(--dark); border-top: 1px solid var(--border);">
+  <div class="container">
+    <p class="section-label es st">Preguntas Frecuentes</p>
+    <p class="section-label en st">FAQ</p>
+    <h2 class="section-title es st">Todo lo que necesitas saber.</h2>
+    <h2 class="section-title en st">Everything you need to know.</h2>
+    <div class="faq-list st">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Cuánto cuesta exactamente un website?</span>
+          <span class="faq-q-text en">How much does a website cost exactly?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">El fee de iniciación va desde $200 (landing page simple) hasta $2,000 (tienda online compleja). El mantenimiento mensual va desde $100/mes. Los costos de plataforma (Shopify, Lovable, etc.) van por tu cuenta — entre $25 y $39/mes. Te damos el precio exacto antes de empezar — nunca hay sorpresas.</p>
+          <p class="faq-a-inner en">The setup fee ranges from $200 (simple landing page) to $2,000 (complex online store). Monthly maintenance starts at $100/mo. Platform costs (Shopify, Lovable, etc.) are yours — between $25 and $39/mo. We give you the exact price before starting — no surprises, ever.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Qué pasa si no me gusta el diseño?</span>
+          <span class="faq-q-text en">What if I don't like the design?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">Te presentamos 3 opciones de diseño distintas antes de construir nada. Tú eliges cuál te gusta. Después tienes 2 rondas de revisión incluidas para hacer ajustes. Tu aprobación es obligatoria antes de publicar el sitio.</p>
+          <p class="faq-a-inner en">We show you 3 different design options before building anything. You choose the one you like. Then you get 2 included revision rounds to make adjustments. Your approval is required before we publish the site.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Puedo cancelar el mantenimiento cuando quiera?</span>
+          <span class="faq-q-text en">Can I cancel the maintenance anytime?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">Sí. El mantenimiento es mes a mes — sin contratos a largo plazo. Si decides cancelar, te avisas con 30 días de anticipación y listo. El sitio y todos los archivos quedan en tus manos.</p>
+          <p class="faq-a-inner en">Yes. Maintenance is month to month — no long-term contracts. If you decide to cancel, just give us 30 days notice. The site and all files stay with you.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Necesito saber algo de tecnología?</span>
+          <span class="faq-q-text en">Do I need to know anything about technology?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">Cero. Nosotros manejamos todo — dominio, hosting, seguridad, código. Tú solo nos das los datos de tu negocio (nombre, fotos, colores) y nosotros hacemos el resto. Si en algún momento no entiendes algo, te lo explicamos en lenguaje claro.</p>
+          <p class="faq-a-inner en">Zero. We handle everything — domain, hosting, security, code. You just give us your business info (name, photos, colors) and we do the rest. If you ever don't understand something, we explain it in plain language.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Cuánto tarda en estar listo mi sitio?</span>
+          <span class="faq-q-text en">How long until my site is ready?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">La mayoría de los sitios están vivos en menos de 30 días desde el primer pago. El tiempo depende de qué tan rápido nos proporciones el contenido (fotos, textos, logo). Nosotros nunca somos el cuello de botella.</p>
+          <p class="faq-a-inner en">Most sites go live in under 30 days from the first payment. The timeline depends on how quickly you provide content (photos, text, logo). We are never the bottleneck.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text es">¿Qué necesito tener listo antes de empezar?</span>
+          <span class="faq-q-text en">What do I need ready before we start?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <p class="faq-a-inner es">Idealmente: logo, algunas fotos de tu negocio o productos, y una idea de los colores que te gustan. Si no tienes logo, podemos orientarte. Si no tienes fotos, usamos imágenes profesionales gratuitas de alta calidad mientras consigues las tuyas.</p>
+          <p class="faq-a-inner en">Ideally: a logo, some photos of your business or products, and an idea of the colors you like. If you don't have a logo, we can guide you. If you don't have photos, we use free high-quality professional images while you get yours.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -317,7 +552,7 @@
 <section id="contacto" class="form-section">
   <div class="container">
     <div class="form-wrap">
-      <div class="form-left">
+      <div class="form-left st">
         <p class="section-label es">Empecemos</p>
         <p class="section-label en">Let's Start</p>
         <h2 class="es">¿Listo para tener tu website?</h2>
@@ -340,7 +575,7 @@
         </a>
       </div>
 
-      <div class="form-right">
+      <div class="form-right st">
         <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-row">
             <div>
@@ -398,7 +633,7 @@
 <footer>
   <div class="footer-logo">T<span>-</span>LABS</div>
   <p>© 2026 T-Labs Digital. <span class="es i">Todos los derechos reservados.</span><span class="en i">All rights reserved.</span></p>
-  <p style="margin-top:6px;">tlabsdigital.com</p>
+  <p style="margin-top:6px; color: #4a5a6a;">tlabsdigital.com · admin@tololabs.com</p>
 </footer>
 
 <script>
@@ -408,7 +643,6 @@
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
     });
-    // Swap WA links
     const waLinks = {
       heroWaBtn: {
         es: 'https://wa.me/19547068400?text=Hola%2C%20vi%20su%20p%C3%A1gina%20y%20me%20interesa.',
@@ -423,14 +657,20 @@
       const el = document.getElementById(id);
       if (el) el.href = urls[lang];
     });
-    // Textarea placeholder
     const msg = document.getElementById('msgArea');
     if (msg) msg.placeholder = lang === 'es' ? 'Cuéntanos brevemente qué tipo de página necesitas...' : 'Tell us briefly what kind of page you need...';
-    // Name placeholder
     const nombre = document.getElementById('inputNombre');
     if (nombre) nombre.placeholder = lang === 'es' ? 'Ej. María García' : 'e.g. John Smith';
     const negocio = document.getElementById('inputNegocio');
     if (negocio) negocio.placeholder = lang === 'es' ? 'Ej. Bella Boutique' : 'e.g. Bella Boutique';
+  }
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   }
 
   // Form
@@ -448,11 +688,7 @@
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.step, .why-card, .stat').forEach(el => {
-    el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    obs.observe(el);
-  });
+  document.querySelectorAll('.st').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
